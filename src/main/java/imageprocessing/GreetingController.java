@@ -36,6 +36,7 @@ import org.bytedeco.javacpp.opencv_core.CvPoint3D32f;
 import org.bytedeco.javacpp.opencv_core.CvScalar;
 import org.bytedeco.javacpp.opencv_core.CvSeq;
 import org.bytedeco.javacpp.opencv_core.IplImage;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,22 +45,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-  private static final String template = "Hello, %s!";
+  // private static final String pathToFile = "";
+  private static final String pathToFile = "C:\\xampp\\htdocs\\hci_latest\\images\\";
   private final AtomicLong counter = new AtomicLong();
 
+  // @CrossOrigin(origins = "http://localhost:8081")
   @RequestMapping("/getshouldersize")
   public String greeting(@RequestParam(value = "username", defaultValue = "") String username) {
     if (username.equals("")) {
       return "Provide Username: usage example -> http://localhost:8080/getshouldersize?username=abcd";
     }
     JAI.getDefaultInstance().setImagingListener(new MyErrListener());
-    IplImage src = cvLoadImage(username + ".jpg");
+    IplImage src = cvLoadImage(pathToFile + username + ".jpg");
     IplImage gray = cvCreateImage(cvGetSize(src), 8, 1);
     cvCvtColor(src, gray, CV_BGR2GRAY);
     cvSmooth(gray, gray);
     CvMemStorage mem = CvMemStorage.create();
     int leftCount = 0, rightCount = 0;
-    PlanarImage im0 = (PlanarImage) JAI.create("fileload", username + ".jpg");
+    PlanarImage im0 = (PlanarImage) JAI.create("fileload", pathToFile + username + ".jpg");
     CvSeq circles = cvHoughCircles(gray, // Input image
         mem, // Memory Storage
         CV_HOUGH_GRADIENT, // Detection method
