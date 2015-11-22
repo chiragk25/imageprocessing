@@ -6,6 +6,7 @@ import static org.bytedeco.javacpp.opencv_core.cvGetSize;
 import static org.bytedeco.javacpp.opencv_core.cvPointFrom32f;
 import static org.bytedeco.javacpp.opencv_highgui.cvShowImage;
 import static org.bytedeco.javacpp.opencv_highgui.cvWaitKey;
+import static org.bytedeco.javacpp.opencv_imgcodecs.cvSaveImage;
 import static org.bytedeco.javacpp.opencv_imgcodecs.cvLoadImage;
 import static org.bytedeco.javacpp.opencv_imgproc.CV_AA;
 import static org.bytedeco.javacpp.opencv_imgproc.CV_BGR2GRAY;
@@ -89,6 +90,7 @@ public class GreetingController {
         cvCircle(src, center, radius, CvScalar.GREEN, 2, CV_AA, 0);
       }
     }
+
     System.out.println("Diameter of CD: " + diameter);
 
     float data_h[] = new float[] {1.0F, 0.0F, -1.0F, 1.414F, 0.0F, -1.414F, 1.0F, 0.0F, -1.0F};
@@ -136,6 +138,7 @@ public class GreetingController {
 
     int width = im1.getWidth();
     int height = im1.getHeight();
+    cvSaveImage(pathToFile + username + "_CD.jpg", src);
     return shoulderSize + "";
   }
 
