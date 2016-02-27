@@ -47,13 +47,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
   // private static final String pathToFile = "";
-  private static final String pathToFile = "C:\\xampp\\htdocs\\hci_latest\\images\\";
+  private static final String pathToFile = "C:\\xampp\\htdocs\\hci_project\\images\\";
   private final AtomicLong counter = new AtomicLong();
 
   // @CrossOrigin(origins = "http://localhost:8081")
   @RequestMapping("/getshouldersize")
   public String greeting(@RequestParam(value = "username", defaultValue = "") String username) {
     if (username.equals("")) {
+
       return "Provide Username: usage example -> http://localhost:8080/getshouldersize?username=abcd";
     }
     JAI.getDefaultInstance().setImagingListener(new MyErrListener());
@@ -133,7 +134,7 @@ public class GreetingController {
     }
 
     System.out.println("Shoulder width: " + (rightCount - leftCount));
-    double shoulderSize = 4.72 * (rightCount - leftCount) / diameter;
+    double shoulderSize = 5 * (rightCount - leftCount) / diameter;
     System.out.println("Shouldersize in inches : " + shoulderSize);
 
     int width = im1.getWidth();
