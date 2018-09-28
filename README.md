@@ -1,7 +1,6 @@
 # vke -- 0.9 (Build: 84a5513)
 
 Command line interface for VMware Kubernetes Engine
-
 ## List of supported commands
 
 ### 1 ```account```
@@ -487,8 +486,7 @@ Create a new cluster
 Create a new Kubernetes cluster. 
 
     Example: 
-   vke cluster create -n TestCluster -v 1.7.5\
-      --region us-west-2
+     vke cluster create -n TestCluster -v 1.7.5 --region us-west-2 
 
 Flags: 
 ```
@@ -948,7 +946,7 @@ prints the CLI documentation
 ### 9 ```help```
 Shows a list of commands or help for one command
 
-Global Flags
+Global Flags:
 ```
 --non-interactive, -n	trigger for non-interactive mode (scripting)
 --log-file value, -l value	write logging information into a logfile at the specified path
@@ -956,4 +954,5 @@ Global Flags
 --detail, -d	print the current target, user, Organization and project
 --help, -h	show help
 --version, -v	print the version
+
 ```
