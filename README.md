@@ -2,6 +2,8 @@
 
 Command line interface for VMware Kubernetes Engine
 
+## List of supported commands
+
 ### 1 ```account```
 Commands to log in and show account info
 
@@ -947,11 +949,11 @@ prints the CLI documentation
 Shows a list of commands or help for one command
 
 Global Flags
-
+```
 --non-interactive, -n	trigger for non-interactive mode (scripting)
 --log-file value, -l value	write logging information into a logfile at the specified path
 --output value, -o value	the output format can be any of the following values ["json"]
 --detail, -d	print the current target, user, Organization and project
 --help, -h	show help
 --version, -v	print the version
-
+```
